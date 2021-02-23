@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.wojia.application.mapper.UserMapper">
+<!--注册用户-->
+    <insert id="regist" parameterType="com.wojia.application.pojo.User">
+        insert into user
+        values (null, #{username}, #{password}, #{name}, #{email}, #{phone}, #{addr}, #{state}, #{code});
+    </insert>
+<!--登录功能的实现-->
+    <select id="getUser" parameterType="map" resultType="com.wojia.application.pojo.User">
+        select * from user where email=#{email} and password=#{password};
+    </select>
+
+        <select id="getUserByEmail" parameterType="String" resultType="com.wojia.application.pojo.User">
+        select * from user where email=#{email} ;
+    </select>
+</mapper>

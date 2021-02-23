@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.wojia.application.mapper.ProductMapper">
+    <select id="findHot"  resultType="com.wojia.application.pojo.Product">
+        select * from product where is_hot=1  limit 10;
+    </select>
+
+    <select id="findNew"  resultType="com.wojia.application.pojo.Product">
+        select * from product where is_hot=0 limit 10;
+    </select>
+
+    <select id="getProduct" parameterType="int" resultType="com.wojia.application.pojo.Product">
+        select * from product where pid=#{pid};
+    </select>
+</mapper>
